@@ -289,7 +289,7 @@ iframe {
                     <div class="kontak-icon"><i class="bi bi-geo-alt-fill"></i></div>
                     <div class="kontak-text">
                         <h5>Alamat</h5>
-                        <p>Jl. Ringroad Utara, Sleman, Yogyakarta</p>
+                        <p>Jl. Simbang, Bebengan, Kec.Boja, Kabupaten Kendal</p>
                     </div>
                 </div>
 
@@ -298,7 +298,7 @@ iframe {
                     <div class="kontak-icon"><i class="bi bi-clock-fill"></i></div>
                     <div class="kontak-text">
                         <h5>Jam Operasional</h5>
-                        <p>08.00 – 21.00 WIB</p>
+                        <p>18.00 - 00.00 WIB</p>
                     </div>
                 </div>
 
