@@ -241,45 +241,45 @@ iframe {
                 <p class="kontak-sub">Hubungi kami melalui informasi berikut</p>
 
                 <!-- WHATSAPP -->
-                <a href="https://wa.me/6281915200751" target="_blank" class="text-decoration-none text-dark">
+                <a href="https://wa.me/6281901227343" target="_blank" class="text-decoration-none text-dark">
                     <div class="kontak-item">
                         <div class="kontak-icon"><i class="bi bi-whatsapp"></i></div>
                         <div class="kontak-text">
                             <h5>WhatsApp</h5>
-                            <p>+62 819-1520-0751</p>
+                            <p>+62 819-0122-7343</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- INSTAGRAM -->
-                <a href="https://instagram.com/USERNAME_KAMU" target="_blank" class="text-decoration-none text-dark">
+                <a href="https://www.instagram.com/bakmijowo_official?igsh=MW9xd29rbG9iYzZjbA==" target="_blank" class="text-decoration-none text-dark">
                     <div class="kontak-item">
                         <div class="kontak-icon"><i class="bi bi-instagram"></i></div>
                         <div class="kontak-text">
                             <h5>Instagram</h5>
-                            <p>@usernamekamu</p>
+                            <p>@bakmijowo_pakheri</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- FACEBOOK -->
-                <a href="https://facebook.com/USERNAME_KAMU" target="_blank" class="text-decoration-none text-dark">
+                <a href="https://www.facebook.com/share/1CA5jLDTnJ/" target="_blank" class="text-decoration-none text-dark">
                     <div class="kontak-item">
                         <div class="kontak-icon"><i class="bi bi-facebook"></i></div>
                         <div class="kontak-text">
                             <h5>Facebook</h5>
-                            <p>Nama Facebook Kamu</p>
+                            <p>pakheri Bakmijowo</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- TIKTOK -->
-                <a href="https://tiktok.com/@USERNAME_KAMU" target="_blank" class="text-decoration-none text-dark">
+                <a href="https://www.tiktok.com/@bakmijowo_officia?_r=1&_t=ZS-958sF9VRTKG" target="_blank" class="text-decoration-none text-dark">
                     <div class="kontak-item">
                         <div class="kontak-icon"><i class="bi bi-tiktok"></i></div>
                         <div class="kontak-text">
                             <h5>TikTok</h5>
-                            <p>@usernamekamu</p>
+                            <p>@bakmijowo_official</p>
                         </div>
                     </div>
                 </a>
