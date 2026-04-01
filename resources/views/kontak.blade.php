@@ -257,7 +257,7 @@ iframe {
                         <div class="kontak-icon"><i class="bi bi-instagram"></i></div>
                         <div class="kontak-text">
                             <h5>Instagram</h5>
-                            <p>@bakmijowo_pakheri</p>
+                            <p>@bakmijowo_official</p>
                         </div>
                     </div>
                 </a>
