@@ -252,7 +252,7 @@ iframe {
                 </a>
 
                 <!-- INSTAGRAM -->
-                <a href="https://www.instagram.com/bakmijowo_official?igsh=MW9xd29rbG9iYzZjbA==" target="_blank" class="text-decoration-none text-dark">
+                <a href="<a href="https://www.instagram.com/bakmijowo_official/" target="_blank" class="text-decoration-none text-dark">" target="_blank" class="text-decoration-none text-dark">
                     <div class="kontak-item">
                         <div class="kontak-icon"><i class="bi bi-instagram"></i></div>
                         <div class="kontak-text">
