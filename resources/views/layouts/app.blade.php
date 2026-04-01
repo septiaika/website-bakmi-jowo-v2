@@ -308,7 +308,9 @@ footer{
     <h4>Ikuti Kami</h4>
     <div class="footer-sosmed">
         <a href="https://wa.me/6281901227343" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/bakmijowo_official?igsh=MW9xd29rbG9iYzZjbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/bakmijowo_pakheri/" target="_blank">
+    <i class="fab fa-instagram"></i>
+</a>
         <a href="https://www.facebook.com/share/1CA5jLDTnJ/" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.tiktok.com/@bakmijowo_officia?_r=1&_t=ZS-958sF9VRTKG" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>

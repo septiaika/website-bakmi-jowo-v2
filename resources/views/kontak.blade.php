@@ -252,12 +252,12 @@ iframe {
                 </a>
 
                 <!-- INSTAGRAM -->
-                <a href="<a href="https://www.instagram.com/bakmijowo_official/" target="_blank" class="text-decoration-none text-dark">" target="_blank" class="text-decoration-none text-dark">
+                                <a href="https://www.instagram.com/bakmijowo_pakheri/" target="_blank" class="text-decoration-none text-dark">
                     <div class="kontak-item">
                         <div class="kontak-icon"><i class="bi bi-instagram"></i></div>
                         <div class="kontak-text">
                             <h5>Instagram</h5>
-                            <p>@bakmijowo_official</p>
+                            <p>@bakmijowo_pakheri</p>
                         </div>
                     </div>
                 </a>
