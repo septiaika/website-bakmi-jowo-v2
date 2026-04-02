@@ -120,7 +120,7 @@ class CartController extends Controller
 
         $pesan .= "*CATATAN* : ".($request->catatan ?? "-");
 
-        $wa = "6287844232528";
+        $wa = "6281901227343";
 
         $url = "https://wa.me/".$wa."?text=".$pesan;
 
