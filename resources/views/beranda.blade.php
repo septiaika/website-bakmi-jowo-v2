@@ -6,7 +6,7 @@
 /* ===== BANNER ===== */
 .banner{
     height:700px;
-    background:url('{{ asset("images/banner.png") }}') center/cover no-repeat;
+    background:url('{{ asset("images/banner2.png") }}') center/cover no-repeat;
     opacity:0;
     transform:translateY(-60px);
     transition:1.2s ease;
@@ -41,12 +41,12 @@
 }
 
 .video-box{
-    background:#111; /* hitam elegan */
+    background:#111;
     max-width:750px;
     margin:auto;
     padding:40px;
     border-radius:20px;
-    border:2px solid #a4712a; /* gold */
+    border:2px solid #a4712a;
     box-shadow:0 15px 40px rgba(0,0,0,.6);
     position:relative;
     transition:.3s;
@@ -58,7 +58,7 @@
 }
 
 .video-box h2{
-    color:#fff; /* gold */
+    color:#fff;
     margin-bottom:20px;
 }
 
@@ -91,9 +91,48 @@ video{
     object-fit:cover;
     border-radius:12px;
 }
+.kartu-produk {
+    position: relative;
+    overflow: hidden;
+}
 
-/* ===== KENAPA MEMILIH KAMI (MODERN) ===== */
-/* ===== KENAPA MEMILIH KAMI (SIMPLE & SEJAJAR 4) ===== */
+.kartu-produk img {
+    width: 100%;
+    display: block;
+}
+
+.kartu-produk {
+    text-align: center;
+}
+
+.overlay {
+    position: static; /* ini kunci utama */
+    transform: none;
+    background: none;
+    padding: 10px 0;
+    color: #fff; /* sesuaikan dengan background */
+    opacity: 1;
+    padding: 15px;
+    border-radius: 10px;
+
+    opacity: 1; /* INI bikin selalu muncul */
+}
+.overlay h3 {
+    font-size: 16px; /* kecilin judul */
+    margin-bottom: 5px;
+}
+
+.overlay p {
+    font-size: 13px; /* kecilin deskripsi */
+    line-height: 1.4;
+}
+
+/* kalau sebelumnya ada hover, hapus atau matikan */
+.kartu-produk:hover .overlay {
+    opacity: 1;
+}
+
+/* ===== KENAPA MEMILIH KAMI ===== */
 .kenapa-section{
     padding:100px 20px;
     text-align:center;
@@ -232,13 +271,34 @@ video{
 </div>
 
 <div class="katalog anim-scroll">
-    <h2>Katalog Produk</h2>
+    <h2>Keunggulan</h2>
     <div class="katalog-grid">
-        @foreach($menus as $menu)
-            <div class="kartu-produk">
-                <img src="{{ asset('images/menu/'.$menu->foto) }}">
+        <!-- Kartu 1 -->
+        <div class="kartu-produk">
+            <img src="{{ asset('images/foto1.png') }}" alt="Teknik Memasak">
+            <div class="overlay">
+                <h3>Teknik Memasak</h3>
+                <p>Dimasak menggunakan anglo dan arang untuk menjaga cita rasa autentik.</p>
             </div>
-        @endforeach
+        </div>
+
+        <!-- Kartu 2 -->
+        <div class="kartu-produk">
+            <img src="{{ asset('images/foto2.png') }}" alt="Bumbu Khas">
+            <div class="overlay">
+                <h3>Konsistensi Rasa</h3>
+                <p>Resep rahasia dengan bumbu khas yang diwariskan secara turun-temurun.</p>
+            </div>
+        </div>
+
+        <!-- Kartu 3 -->
+        <div class="kartu-produk">
+            <img src="{{ asset('images/foto3.jpg') }}" alt="Cita Rasa Autentik">
+            <div class="overlay">
+                <h3>Lebih dari 1 dekade menjaga cita rasa</h3>
+                <p>dari tahun 2012 menjaga rasa bakmi Jawa tetap autentik dan konsisten.</p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -247,35 +307,32 @@ video{
     <div class="kenapa-grid">
         <div class="kenapa-item">
             <i class="fas fa-fire"></i>
-            <h4>Masak Tradisional</h4>
-            <p>Dimasak menggunakan anglo dan arang untuk menjaga cita rasa autentik.</p>
+            <h4>Standar Kebersihan</h4>
+            <p>Proses memasak dan penyajian selalu menjaga standar kebersihan, sehingga aman dan nyaman untuk dikonsumsi.</p>
         </div>
         <div class="kenapa-item">
             <i class="fas fa-leaf"></i>
-            <h4>Bahan Berkualitas</h4>
-            <p>Menggunakan bahan segar pilihan terbaik.</p>
+            <h4>Harga Terjangkau</h4>
+            <p>Rasa premium tanpa harus mahal—cocok untuk semua kalangan.</p>
         </div>
         <div class="kenapa-item">
             <i class="fas fa-heart"></i>
-            <h4>Penuh Kehangatan</h4>
-            <p>Dibuat dengan sepenuh hati untuk pelanggan.</p>
+            <h4>Tanpa Pengawet</h4>
+            <p>Semua makanan dibuat fresh tanpa bahan pengawet, jadi lebih aman dan alami.</p>
         </div>
         <div class="kenapa-item">
             <i class="fas fa-star"></i>
-            <h4>Rasa Terjamin</h4>
-            <p>Resep turun-temurun dengan rasa konsisten.</p>
+            <h4>Pelayanan Cepat & Ramah</h4>
+            <p>Kami mengutamakan kepuasan pelanggan dengan pelayanan yang responsif dan bersahabat.</p>
         </div>
     </div>
 </section>
 
 <section class="testimoni-section anim-scroll">
-
     <h2>Apa Kata Pelanggan Kami?</h2>
-
     <div class="testimoni-grid">
         @forelse($testimonis as $t)
             <div class="testimoni-item">
-
                 <div class="rating">
                     @for($i = 1; $i <= 5; $i++)
                         @if($i <= $t->rating)
@@ -285,27 +342,22 @@ video{
                         @endif
                     @endfor
                 </div>
-
                 <div class="testimoni-text">
                     "{{ $t->pesan }}"
                 </div>
-
                 <div class="sumber">
                     - {{ $t->nama }}
                 </div>
-
             </div>
         @empty
             <p style="color:#ccc;">Belum ada ulasan.</p>
         @endforelse
     </div>
-
     <a href="https://maps.app.goo.gl/uG21c2jAjzSs6tMZ9" 
        target="_blank" 
        class="btn-google">
         Lihat Ulasan Lengkap di Google Maps
     </a>
-
 </section>
 
 <script>
