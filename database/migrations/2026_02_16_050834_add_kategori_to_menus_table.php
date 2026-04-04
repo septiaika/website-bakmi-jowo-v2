@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::table('menus', function (Blueprint $table) {
-        $table->string('kategori')->nullable()->after('deskripsi');
-    });
+    if (Schema::hasColumn('users', 'role')) {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
+        });
+    }
 }
 
 
@@ -22,9 +24,11 @@ return new class extends Migration
      */
     public function down()
 {
-    Schema::table('menus', function (Blueprint $table) {
-        $table->dropColumn('kategori');
-    });
+    if (!Schema::hasColumn('users', 'role')) {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->nullable();
+        });
+    }
 }
 
 };
