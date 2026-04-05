@@ -123,24 +123,6 @@
     border-radius:20px;
     box-shadow:0 8px 22px rgba(0,0,0,.2);
 }
-
-/* ===== VISI MISI ===== */
-.layout-visi-misi{
-    display:flex;
-    gap:40px;
-    align-items:center;
-}
-.layout-visi-misi img{
-    width:380px;
-    border-radius:20px;
-}
-.isi{line-height:1.8}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-    .layout-visi-misi{flex-direction:column}
-    .foto-pemilik{margin-top:-100px}
-}
 </style>
 
 <!-- ===== BANNER ===== -->
@@ -185,30 +167,6 @@
             </div>
         </div>
         @endforeach
-    </div>
-</div>
-
-<!-- ===== VISI MISI ===== -->
-<div class="section-bg">
-    <h2 class="judul">Visi & Misi Kami</h2>
-    <div class="layout-visi-misi">
-        <img src="{{ asset('images/visi-misi.png') }}">
-        <div>
-            <h4>Visi</h4>
-            <p class="isi">
-                Menjadi warung bakmi jowo tradisional
-                yang dikenal luas dengan rasa autentik.
-            </p>
-
-            <h4>Misi</h4>
-            <ul class="isi">
-                <li>Menjaga dan melestarikan resep asli bakmi jowo dengan teknik memasak tradisional menggunakan anglo.</li>
-                <li>Menggunakan bahan-bahan berkualitas untuk menjaga rasa dan kepuasan pelanggan.</li>
-                <li>Memberikan pelayanan yang ramah, cepat, dan penuh kekeluargaan.</li>
-                <li>Terus berinovasi tanpa meninggalkan cita rasa khas tradisional.</li>
-                <li>Mengembangkan usaha secara berkelanjutan melalui peningkatan kualitas dan digitalisasi layanan.<li>
-            </ul>
-        </div>
     </div>
 </div>
 
