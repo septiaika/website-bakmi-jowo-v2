@@ -18,7 +18,7 @@ body{
 
 /* CARD COKLAT */
 .ulasan-card{
-    background:#4b2e2e; /* coklat elegan */
+    background:#997950; /* coklat elegan */
     border:none;
     border-radius:20px;
     transition:.3s;

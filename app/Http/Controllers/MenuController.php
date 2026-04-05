@@ -28,13 +28,12 @@ public function index()
 }
     // Halaman Beranda (Pengunjung)
     public function beranda()
-    {
-        $menus      = Menu::latest()->take(6)->get();
-        $testimonis = Testimoni::latest()->take(3)->get();
+{
+    $testimonis = Testimoni::latest()->take(3)->get();
+    $rating = Testimoni::avg('rating');
 
-        return view('beranda', compact('menus', 'testimonis'));
-    }
-
+    return view('beranda', compact('testimonis', 'rating'));
+}
 
     // ================= ADMIN =================
 

@@ -178,7 +178,7 @@
 <div class="info-box">
     ⚠️ Perubahan data menu, galeri, dan ulasan akan langsung tampil di halaman pengunjung.
     <br><br>
-    ⏰ Login terakhir: {{ now()->format('d M Y H:i') }}
+    ⏰ Login terakhir: {{ now()->format('d M Y') }}
 </div>
 ```
 

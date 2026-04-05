@@ -61,12 +61,6 @@ nav {
   gap: 20px;
 }
 
-.hamburger {
-  font-size: 28px;
-  cursor: pointer;
-  color: #000;
-}
-
 nav img {
   height: 90px;
 }
@@ -233,7 +227,6 @@ footer {
 <!-- ================= NAVBAR ================= -->
 <nav>
   <div class="nav-left">
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
 
     <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Logo" /></a>
 
@@ -263,26 +256,6 @@ footer {
         <img src="{{ asset('images/wa.png') }}" alt="WA" style="width:50px;height:50px;"></a>
   </div>
 </nav>
-
-<!-- ================= MENU MOBILE ================= -->
-<div class="nav-menu" id="navMenu">
-  @guest
-  <a href="/">Beranda</a>
-  <a href="/profil">Profil</a>
-  <a href="/menu">Menu</a>
-  <a href="/galeri">Galeri</a>
-  <a href="/kontak">Kontak</a>
-  <a href="/login" class="login-btn">Login Admin</a>
-  @endguest
-
-  @auth
-  <a href="/dashboard">Dashboard</a>
-  <a href="/dashboard/menu">Kelola Menu</a>
-  <a href="/dashboard/galeri">Kelola Galeri</a>
-  <a href="/dashboard/ulasan">Kelola Ulasan</a>
-  <a href="/logout" class="login-btn">Logout</a>
-  @endauth
-</div>
 
 <!-- ================= KONTEN ================= -->
 <div class="main-container">
@@ -319,18 +292,12 @@ footer {
     <div class="footer-box">
   <h4>Ikuti Kami</h4>
   <div class="footer-sosmed">
-    <a href="https://wa.me/6281901227343" target="_blank">
-      <img src="{{ asset('images/wa2.jpg') }}" alt="WA" style="width:35px;height:35px;border-radius:50%;">
-    </a>
-    <a href="https://www.instagram.com/bakmijowo_pakheri/" target="_blank">
-      <img src="{{ asset('images/ig.jpg') }}" alt="IG" style="width:35px;height:35px;border-radius:50%;">
-    </a>
-    <a href="https://www.facebook.com/share/1CA5jLDTnJ/" target="_blank">
-      <img src="{{ asset('images/fb.jpg') }}" alt="FB" style="width:35px;height:35px;border-radius:50%;">
-    </a>
-    <a href="https://www.tiktok.com/@bakmijowo_officia?_r=1&_t=ZS-958sF9VRTKG" target="_blank">
-      <img src="{{ asset('images/tiktok.jpg') }}" alt="TikTok" style="width:35px;height:35px;border-radius:50%;">
-    </a>
+    <a href="https://wa.me/6281901227343" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/bakmijowo_pakheri/" target="_blank">
+    <i class="fab fa-instagram"></i>
+</a>
+        <a href="https://www.facebook.com/share/1CA5jLDTnJ/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@bakmijowo_officia?_r=1&_t=ZS-958sF9VRTKG" target="_blank"><i class="fab fa-tiktok"></i></a>
   </div>
 
       <a href="https://wa.me/6281901227343" target="_blank" class="cta-wa">Pesan via WhatsApp</a>
@@ -338,17 +305,12 @@ footer {
 
   </div>
 
-  <div class="footer-bottom">
-    © {{ date('Y') }} UMKM Bakmi Jowo Pak Heri
-  </div>
+<div class="footer-bottom">
+  © {{ date('Y') }} UMKM Bakmi Jowo Pak Heri
+  <br>
+  <a href="/login" style="font-size:12px;color:#777;">Admin Login</a>
+</div>
 </footer>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-  }
-</script>
 
 </body>
 </html>

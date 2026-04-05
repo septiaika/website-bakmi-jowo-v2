@@ -22,7 +22,7 @@
 .anim-scroll.show{opacity:1;transform:none}
 
 /* ===== SAPAAN ===== */
-.gambar-utama{padding:80px 15px}
+.gambar-utama{padding:45px 15px}
 .wrapper-gambar{
     max-width:900px;
     margin:auto;
@@ -37,7 +37,7 @@
 /* ===== VIDEO ===== */
 .section-video{
     text-align:center;
-    padding:60px 10px;
+    padding:45px 10px;
 }
 
 .video-box{
@@ -76,7 +76,7 @@ video{
 }
 
 /* ===== KATALOG ===== */
-.katalog{padding:60px 10px}
+.katalog{padding:45px 10px}
 .katalog h2{text-align:center;color:#fff;margin-bottom:40px}
 .katalog-grid{
     max-width:1000px;
@@ -134,7 +134,7 @@ video{
 
 /* ===== KENAPA MEMILIH KAMI ===== */
 .kenapa-section{
-    padding:100px 20px;
+    padding:55px 20px;
     text-align:center;
     background:transparent;
 }
@@ -188,7 +188,7 @@ video{
 
 /* ===== TESTIMONI ===== */
 .testimoni-section{
-    padding:100px 20px;
+    padding:55px 20px;
     text-align:center;
     background:#000;
 }
@@ -308,28 +308,31 @@ video{
         <div class="kenapa-item">
             <i class="fas fa-fire"></i>
             <h4>Standar Kebersihan</h4>
-            <p>Proses memasak dan penyajian selalu menjaga standar kebersihan, sehingga aman dan nyaman untuk dikonsumsi.</p>
+            <p>Proses memasak dan penyajian selalu menjaga standar kebersihan.</p>
         </div>
         <div class="kenapa-item">
             <i class="fas fa-leaf"></i>
             <h4>Harga Terjangkau</h4>
-            <p>Rasa premium tanpa harus mahal—cocok untuk semua kalangan.</p>
+            <p>Rasa premium tanpa harus mahal cocok untuk semua kalangan.</p>
         </div>
         <div class="kenapa-item">
             <i class="fas fa-heart"></i>
             <h4>Tanpa Pengawet</h4>
-            <p>Semua makanan dibuat fresh tanpa bahan pengawet, jadi lebih aman dan alami.</p>
+            <p>Semua makanan dibuat fresh tanpa bahan pengawet.</p>
         </div>
         <div class="kenapa-item">
             <i class="fas fa-star"></i>
             <h4>Pelayanan Cepat & Ramah</h4>
-            <p>Kami mengutamakan kepuasan pelanggan dengan pelayanan yang responsif dan bersahabat.</p>
+            <p>Kami mengutamakan kepuasan pelanggan dengan pelayanan yang responsif.</p>
         </div>
     </div>
 </section>
 
+{{-- ===== SECTION TESTIMONI FINAL ===== --}}
 <section class="testimoni-section anim-scroll">
     <h2>Apa Kata Pelanggan Kami?</h2>
+
+    {{-- 3 testimoni terbaru dari database --}}
     <div class="testimoni-grid">
         @forelse($testimonis as $t)
             <div class="testimoni-item">
@@ -353,8 +356,21 @@ video{
             <p style="color:#ccc;">Belum ada ulasan.</p>
         @endforelse
     </div>
-    <a href="https://maps.app.goo.gl/uG21c2jAjzSs6tMZ9" 
-       target="_blank" 
+
+    {{-- rating rata-rata dari database --}}
+    <div style="max-width:700px; margin:50px auto 0; text-align:center;">
+        <h3 style="color:#fff; margin-bottom:10px;">Rating Pelanggan</h3>
+        <div style="font-size:28px; color:#c9a26d; margin-bottom:10px;">
+            {{ number_format($rating ?? 0,1) }}/5
+        </div>
+        <p style="color:#ccc; line-height:1.8;">
+            Rating ini merupakan rata-rata penilaian pelanggan berdasarkan ulasan
+            yang diberikan langsung melalui website Bakmi Jowo Pak Heri.
+        </p>
+    </div>
+
+    <a href="https://maps.app.goo.gl/uG21c2jAjzSs6tMZ9"
+       target="_blank"
        class="btn-google">
         Lihat Ulasan Lengkap di Google Maps
     </a>
