@@ -39,6 +39,15 @@
     transform: scale(1);
 }
 
+/* ===== RESPONSIVE PAGE BANNER ===== */
+@media (max-width: 1200px){
+    .page-banner{
+        background-size: contain;
+        background-color: #000;
+        height: 450px;
+    }
+}
+
 .banner-text{
     text-align:center;
     color:#fff;

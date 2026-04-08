@@ -249,12 +249,23 @@ footer {
     </div>
   </div>
 
-  <div class="nav-right">
-    <a href="https://maps.app.goo.gl/uG21c2jAjzSs6tMZ9" target="_blank" title="Lokasi">
-      <img src="{{ asset('images/lokasi.png') }}" alt="Lokasi" style="width:50px;height:50px;"></a>
-    <a href="https://wa.me/6281901227343" target="_blank">
-        <img src="{{ asset('images/wa.png') }}" alt="WA" style="width:50px;height:50px;"></a>
-  </div>
+  <div class="nav-right" style="display:flex; gap:12px; align-items:center;">
+    
+    <a href="https://maps.app.goo.gl/uG21c2jAjzSs6tMZ9" 
+       target="_blank" 
+       style="display:flex; align-items:center; gap:8px; text-decoration:none; color:#8b5e3c; font-weight:bold;">
+        <img src="{{ asset('images/lokasi.jpg') }}" alt="Lokasi" style="width:35px;height:35px;">
+        <span>Lihat Lokasi</span>
+    </a>
+
+    <a href="https://wa.me/6281901227343" 
+       target="_blank"
+       style="display:flex; align-items:center; gap:8px; text-decoration:none; color:#25D366; font-weight:bold;">
+        <img src="{{ asset('images/wa.jpg') }}" alt="WA" style="width:35px;height:35px;">
+        <span>Pesan via WA</span>
+    </a>
+
+</div>
 </nav>
 
 <!-- ================= KONTEN ================= -->

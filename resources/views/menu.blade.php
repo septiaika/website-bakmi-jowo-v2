@@ -54,6 +54,15 @@ html, body {
     color: #eee;
 }
 
+/* ===== RESPONSIVE MENU BANNER ===== */
+@media (max-width: 1200px){
+    .page-banner{
+        background-size: contain;
+        background-color: #000;
+        height: 420px;
+    }
+}
+
 /* ================= ANIMASI FADE IN UP ================= */
 @keyframes fadeInUp {
     0% {
@@ -234,7 +243,7 @@ html, body {
                 <form action="{{ route('cart.add') }}" method="POST" class="order-form">
                     @csrf
                     <input type="hidden" name="menu_id" value="{{ $item->id }}">
-                    <input type="number" name="quantity" value="1" min="1" required>
+                    <input type="number" name="quantity" value="0" min="0" required>
                     <button type="submit" class="add-cart-btn">🛒 Keranjang</button>
                 </form>
             </div>
@@ -254,7 +263,7 @@ html, body {
                 <form action="{{ route('cart.add') }}" method="POST" class="order-form">
                     @csrf
                     <input type="hidden" name="menu_id" value="{{ $item->id }}">
-                    <input type="number" name="quantity" value="1" min="1" required>
+                    <input type="number" name="quantity" value="0" min="0" required>
                     <button type="submit" class="add-cart-btn">🛒 Keranjang</button>
                 </form>
             </div>

@@ -25,7 +25,7 @@ class CartController extends Controller
     {
         $request->validate([
             'menu_id'  => 'required|exists:menus,id',
-            'quantity' => 'required|integer|min:1'
+            'quantity' => 'required|integer|min:0'
         ]);
 
         $sessionId = session()->getId();

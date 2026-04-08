@@ -19,6 +19,14 @@
     transition:1.2s ease;
 }
 .page-banner.show{opacity:1;transform:none}
+/* ===== RESPONSIVE PAGE BANNER ===== */
+@media (max-width: 1200px){
+    .page-banner{
+        background-size: contain;
+        background-color: #000;
+        height: 420px;
+    }
+}
 
 /* ===== FOTO PEMILIK ===== */
 .foto-pemilik{

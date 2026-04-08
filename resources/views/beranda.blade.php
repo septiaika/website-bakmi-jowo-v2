@@ -11,7 +11,18 @@
     transform:translateY(-60px);
     transition:1.2s ease;
 }
-.banner.muncul{opacity:1;transform:none}
+.banner.muncul{
+    opacity:1;
+    transform:none
+}
+
+/* ===== RESPONSIVE BANNER ===== */
+@media (max-width: 1200px){
+    .banner{
+        background-size: contain;
+        background-color: #000;
+    }
+}
 
 /* ===== SCROLL ANIMATION ===== */
 .anim-scroll{
@@ -198,11 +209,17 @@ video{
     color:#fff;
 }
 .testimoni-grid{
-    max-width:1100px;
+    max-width:900px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(2,1fr);
     gap:30px;
+}
+
+.testimoni-item:last-child{
+    grid-column:1 / span 2;
+    justify-self:center;
+    width:50%;
 }
 .testimoni-item{
     background:#111;

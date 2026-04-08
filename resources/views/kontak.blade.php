@@ -36,6 +36,14 @@ html, body {
     opacity: .95;
 }
 
+/* ===== RESPONSIVE KONTAK BANNER ===== */
+@media (max-width: 1200px){
+    .kontak-banner{
+        background-size: contain;
+        background-color: #000;
+        height: 500px;
+    }
+}
 /* ================= KONTAK ================= */
 .kontak-section {
     padding-bottom: 60px;
