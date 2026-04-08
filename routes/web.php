@@ -12,25 +12,21 @@ use App\Models\Galeri;
 use App\Models\Testimoni;
 use App\Http\Controllers\CartController;
 
-Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
 
-Route::delete('/cart/delete/{id}', [CartController::class, 'delete'])
-    ->name('cart.delete');
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
-Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/order/checkout', [OrderController::class, 'checkout'])->name('order.checkout');
 
 /* ================= HALAMAN UMUM ================== */
 
 Route::get('/', [MenuController::class, 'beranda'])->name('beranda');
 
-Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 /* ===== ORDER / CART ===== */
 Route::post('/order/add', [OrderController::class, 'add'])->name('order.add');
