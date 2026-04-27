@@ -261,6 +261,89 @@ video{
     background:#fff;
     color:#000;
 }
+/* ===== FAQ FINAL SUPER FIX ===== */
+.faq-section{
+    width:100%;
+    padding:80px 2%; /* ini bikin kiri-kanan sejajar */
+}
+
+.faq-box{
+    width:100%;
+    max-width:2500px;
+    margin:40 px auto 10 px;
+    padding:50px 40px;
+    background:#111;
+    border-radius:20px;
+    border:1px solid rgba(201,162,109,0.2);
+}
+
+/* JUDUL */
+.faq-title{
+    color:#fff;
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.faq-sub{
+    text-align:center;
+    color:#bbb;
+    margin-bottom:40px;
+}
+
+/* ACCORDION */
+.accordion-item{
+    background:#1a1a1a;
+    border:none;
+    margin-bottom:14px;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.accordion-button{
+    padding:20px;
+    font-size:16px;
+    background:#1a1a1a;
+    color:#fff;
+    font-weight:600;
+}
+
+.accordion-button:not(.collapsed){
+    background:#c9a26d;
+    color:#000;
+}
+
+.accordion-body{
+    padding:20px;
+    background:#111;
+    color:#ddd;
+}
+
+/* ===== BUTTON FIX ===== */
+.btn-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center; /* ini yang bikin pasti tengah */
+    margin-top:2px;
+}
+
+.btn-google{
+    display:inline-block;
+    padding:14px 35px;
+    background:#c9a26d;
+    color:#000;
+    font-weight:bold;
+    border-radius:40px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn-google:hover{
+    background:#fff;
+    color:#000;
+    transform:scale(1.05);
+}
 </style>
 
 <div class="banner"></div>
@@ -380,18 +463,99 @@ video{
         <div style="font-size:28px; color:#c9a26d; margin-bottom:10px;">
             {{ number_format($rating ?? 0,1) }}/5
         </div>
-        <p style="color:#ccc; line-height:1.8;">
-            Rating ini merupakan rata-rata penilaian pelanggan berdasarkan ulasan
-            yang diberikan langsung melalui website Bakmi Jowo Pak Heri.
         </p>
     </div>
+</section> <!-- tutup testimoni dulu -->
 
+<!-- ================= FAQ ================= -->
+<div class="faq-section">
+    <div class="faq-box">
+        <h3 class="faq-title">Pertanyaan Umum (FAQ)</h3>
+        <p class="faq-sub">Temukan jawaban atas pertanyaan pelanggan</p>
+
+        <div class="accordion" id="faqAccordion">
+
+            <!-- 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        Bagaimana cara memesan Bakmi Jowo?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        Anda dapat memesan melalui WhatsApp dengan klik tombol kontak yang tersedia di website.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        Jam operasionalnya kapan?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        Kami buka setiap hari pukul 18.00 hingga 00.00 WIB.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        Apakah bisa pesan untuk acara?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        Bisa, silakan hubungi kami melalui WhatsApp untuk pemesanan dalam jumlah besar atau acara.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        Apakah tersedia layanan delivery?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        Untuk saat ini pemesanan dapat dilakukan melalui WhatsApp dan bisa dibicarakan untuk pengiriman.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq5">
+                        Menu apa yang paling favorit?
+                    </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        Menu favorit pelanggan adalah Bakmi Goreng dan Bakmi Godhog.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <div class="btn-wrapper">
     <a href="https://maps.app.goo.gl/uG21c2jAjzSs6tMZ9"
        target="_blank"
        class="btn-google">
         Lihat Ulasan Lengkap di Google Maps
     </a>
-</section>
+</div>
 
 <script>
 window.onload=()=>document.querySelector('.banner').classList.add('muncul');

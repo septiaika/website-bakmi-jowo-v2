@@ -332,23 +332,23 @@ iframe {
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" required>
+                            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}" required>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control">
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                         </div>
 
                         <div class="col-12 mb-3">
                             <label class="form-label">Ulasan</label>
-                            <textarea name="pesan" class="form-control" rows="5" required></textarea>
+                            <textarea name="pesan" class="form-control" rows="5" required>{{ old('pesan') }}</textarea>
                         </div>
 
                         <div class="col-12 mb-3">
                             <label class="form-label d-block">Rating</label>
 
-                            <input type="hidden" name="rating" id="rating-value" required>
+                            <input type="hidden" name="rating" id="rating-value" value="{{ old('rating') }}">
 
                             <div class="rating-stars">
                                 <span class="star" data-value="1">★</span>
@@ -357,6 +357,9 @@ iframe {
                                 <span class="star" data-value="4">★</span>
                                 <span class="star" data-value="5">★</span>
                             </div>
+                            @error('rating')
+    <small style="color:red;">{{ $message }}</small>
+@enderror
                         </div>
 
                         <div class="col-12">
@@ -506,6 +509,9 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 });
+if(ratingValue.value){
+    setSelected(ratingValue.value);
+}
 </script>
 
 @endsection

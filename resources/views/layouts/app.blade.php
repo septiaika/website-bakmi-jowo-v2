@@ -250,20 +250,30 @@ footer {
   </div>
 
   <div class="nav-right" style="display:flex; gap:12px; align-items:center;">
-    
+
+    <!-- SEARCH -->
+    <form action="/menu" method="GET" style="display:flex; align-items:center;">
+        <input type="text" name="search" placeholder="Cari menu..."
+            style="padding:6px 12px; border-radius:20px; border:1px solid #ccc; font-size:14px;">
+    </form>
+
+    <!-- LOKASI -->
     <a href="https://maps.app.goo.gl/uG21c2jAjzSs6tMZ9" 
        target="_blank" 
        style="display:flex; align-items:center; gap:8px; text-decoration:none; color:#8b5e3c; font-weight:bold;">
-        <img src="{{ asset('images/lokasi.jpg') }}" alt="Lokasi" style="width:35px;height:35px;">
+        <img src="{{ asset('images/lokasi.jpg') }}" style="width:35px;height:35px;">
         <span>Lihat Lokasi</span>
     </a>
 
+    <!-- WHATSAPP -->
     <a href="https://wa.me/6281901227343" 
        target="_blank"
        style="display:flex; align-items:center; gap:8px; text-decoration:none; color:#25D366; font-weight:bold;">
-        <img src="{{ asset('images/wa.jpg') }}" alt="WA" style="width:35px;height:35px;">
+        <img src="{{ asset('images/wa.jpg') }}" style="width:35px;height:35px;">
         <span>Pesan via WA</span>
     </a>
+
+</div>
 
 </div>
 </nav>
@@ -322,6 +332,6 @@ footer {
   <a href="/login" style="font-size:12px;color:#777;">Admin Login</a>
 </div>
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

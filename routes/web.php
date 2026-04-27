@@ -54,7 +54,7 @@ Route::post('/login', function (Request $request) {
         return redirect('/dashboard');
     }
 
-    return back()->with('error','Login gagal');
+    return back()->with('error','Email atau password salah, Silahkan periksa kembali.');
 });
 
 /* ================= TESTIMONI ================= */
@@ -66,6 +66,8 @@ Route::post('/testimoni', function (Request $request) {
         'email' => 'nullable|email',
         'pesan' => 'required',
         'rating' => 'required|integer|min:1|max:5'
+    ], [
+        'rating.required' => 'Silakan berikan rating dengan memilih jumlah bintang terlebih dahulu. ⭐'
     ]);
 
     Testimoni::create($request->all());

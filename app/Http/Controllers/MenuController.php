@@ -13,10 +13,21 @@ class MenuController extends Controller
 
     // Halaman Menu (Pengunjung)
 
-public function index()
+public function index(Request $request)
 {
-    $makanan = Menu::where('kategori','makanan')->get();
-    $minuman = Menu::where('kategori','minuman')->get();
+    $search = $request->search;
+
+    $makanan = Menu::where('kategori','makanan')
+                ->when($search, function($query) use ($search){
+                    $query->where('nama_menu', 'like', '%'.$search.'%');
+                })
+                ->get();
+
+    $minuman = Menu::where('kategori','minuman')
+                ->when($search, function($query) use ($search){
+                    $query->where('nama_menu', 'like', '%'.$search.'%');
+                })
+                ->get();
 
     $sessionId = session()->getId();
 
@@ -24,7 +35,7 @@ public function index()
                 ->where('session_id', $sessionId)
                 ->get();
 
-    return view('menu', compact('makanan','minuman','carts'));
+    return view('menu', compact('makanan','minuman','carts','search'));
 }
     // Halaman Beranda (Pengunjung)
     public function beranda()

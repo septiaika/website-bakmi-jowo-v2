@@ -35,9 +35,9 @@
     <h3>Login Pemilik UMKM</h3>
 
     @if(session('error'))
-        <p style="color:red; text-align:center;">
+        <div style="background:#ffe5e5; color:#b30000; padding:10px; border-radius:8px; text-align:center; margin-bottom:15px;">
             {{ session('error') }}
-        </p>
+        </div>
     @endif
 
     <form method="POST" action="/login">
@@ -45,12 +45,17 @@
 
         <label>Email</label>
         <input type="email" name="email" required>
+        @error('email')
+            <small style="color:red;">{{ $message }}</small>
+        @enderror
 
         <label>Password</label>
         <input type="password" name="password" required>
+        @error('password')
+            <small style="color:red;">{{ $message }}</small>
+        @enderror
 
         <button type="submit">Login</button>
     </form>
 </div>
-
 @endsection
