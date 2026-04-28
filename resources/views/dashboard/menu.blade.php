@@ -10,7 +10,7 @@
     padding: 20px;
 }
 
-/* ===== BANNER GOLD ===== */
+/* ===== BANNER (SAMA GALERI) ===== */
 .admin-banner {
     background: linear-gradient(135deg,#c89b3c,#a4712a);
     color: #fff;
@@ -31,10 +31,9 @@
 
 .admin-banner p {
     opacity: 0.9;
-    font-size: 15px;
 }
 
-/* ===== STATISTIK GOLD ===== */
+/* ===== STATS ===== */
 .admin-stats {
     background: #111;
     color: #c89b3c;
@@ -42,20 +41,27 @@
     border-radius: 12px;
     font-weight: bold;
     font-size: 18px;
-    border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* ===== NOTIFIKASI ===== */
-.alert-success {
+/* ===== TRASH (SAMA GALERI STYLE) ===== */
+.btn-trash {
     background: #1f1f1f;
     color: #c89b3c;
-    padding: 12px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 4px solid #c89b3c;
+    padding: 10px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
 }
 
-/* ===== FORM (ABU GELAP) ===== */
+.btn-trash:hover {
+    background: #2a2a2a;
+    transform: translateY(-2px);
+}
+
+/* ===== FORM (CARD GALERI STYLE) ===== */
 .menu-form {
     background: #1f1f1f;
     padding: 25px;
@@ -65,9 +71,8 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
 
-.menu-form h3{
-    margin-bottom:15px;
-    color:#c89b3c;
+.menu-form h3 {
+    color: #c89b3c;
 }
 
 .menu-form input,
@@ -80,31 +85,18 @@
     border: 1px solid #333;
     background: #2c2c2c;
     color: #fff;
-    font-size: 15px;
 }
 
-.menu-form input::placeholder,
-.menu-form textarea::placeholder {
-    color: #aaa;
-}
-
-/* ===== TOMBOL HITAM ===== */
 .menu-form button {
     background: #000;
     color: #fff;
     padding: 12px 25px;
     border: none;
     border-radius: 8px;
-    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.menu-form button:hover {
-    background: #222;
-}
-
-/* ===== TABEL (ABU GELAP ELEGAN) ===== */
+/* ===== TABLE (SAMA GALERI) ===== */
 .menu-table {
     width: 100%;
     border-collapse: collapse;
@@ -116,14 +108,12 @@
 
 .menu-table th,
 .menu-table td {
-    padding: 14px 16px;
-    text-align: left;
+    padding: 14px;
     color: #fff;
 }
 
 .menu-table th {
     background: #111;
-    font-size: 15px;
     color: #c89b3c;
 }
 
@@ -131,8 +121,13 @@
     background: #2a2a2a;
 }
 
-/* ===== AKSI BUTTON EDIT ===== */
-.menu-table a {
+.menu-table img {
+    width: 80px;
+    border-radius: 10px;
+}
+
+/* ===== BUTTON ===== */
+.btn-edit {
     background: #000;
     color: #fff;
     padding: 6px 14px;
@@ -141,33 +136,65 @@
     font-size: 13px;
 }
 
-.menu-table a:hover {
-    background: #222;
-}
-/* ===== AKSI BUTTON HAPUS ===== */
-.menu-table button {
-    background: #FF0000;
+.btn-hapus {
+    background: red;
     color: #fff;
     border: none;
     padding: 6px 14px;
     border-radius: 6px;
+    cursor: pointer;
     font-size: 13px;
 }
 
-.menu-table button:hover {
-    background: #222;
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
 }
 
-@media(max-width:768px){
-    .admin-banner{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:15px;
-    }
+.modal-content {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;
+}
+
+.btn-cancel {
+    background: #333;
+    color: #fff;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+}
+
+.btn-delete {
+    background: red;
+    color: #fff;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
 }
 
 </style>
 
+<!-- MODAL -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h3>Konfirmasi Hapus</h3>
+        <p>Yakin ingin menghapus menu ini?</p>
+
+        <div style="margin-top:15px;">
+            <button id="cancelBtn" class="btn-cancel">Batal</button>
+            <button id="confirmBtn" class="btn-delete">Hapus</button>
+        </div>
+    </div>
+</div>
 
 <div class="container">
 
@@ -175,59 +202,75 @@
     <div class="admin-banner">
         <div>
             <h1>Kelola Menu</h1>
-            <p>Tambah, edit, dan hapus daftar menu Bakmi Jowo</p>
+            <p>Tambah, edit, dan hapus menu</p>
         </div>
 
-        <div class="admin-stats">
-            Total Menu: {{ count($menu) }}
+        <div style="display:flex; gap:10px; align-items:center;">
+            <div class="admin-stats">
+                Total Menu: {{ count($menu) }}
+            </div>
+
+            <!-- TRASH (FIXED & STYLE GALERI) -->
+            <a href="{{ url('/menu/trash') }}" class="btn-trash">
+                🗑 Trash
+            </a>
         </div>
     </div>
 
-    @if(session('success'))
-        <div class="alert-success">{{ session('success') }}</div>
-    @endif
-
-    <!-- ===== FORM TAMBAH MENU ===== -->
+    <!-- ===== FORM ===== -->
     <div class="menu-form">
-        <h3>Tambah Menu Baru</h3>
+        <h3>Upload Menu</h3>
+
         <form action="{{ route('dashboard.menu.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
             <input type="text" name="nama_menu" placeholder="Nama Menu" required>
             <input type="number" name="harga" placeholder="Harga" required>
             <textarea name="deskripsi" placeholder="Deskripsi"></textarea>
+
             <select name="kategori" required>
                 <option value="makanan">Makanan</option>
                 <option value="minuman">Minuman</option>
             </select>
+
             <input type="file" name="foto">
-            <button type="submit">Tambah Menu</button>
+            <button type="submit">Upload Menu</button>
         </form>
     </div>
 
-    <!-- ===== TABEL MENU ===== -->
+    <!-- ===== TABLE ===== -->
     <table class="menu-table">
         <tr>
             <th>Foto</th>
             <th>Nama</th>
             <th>Harga</th>
             <th>Kategori</th>
+            <th>Deskripsi</th>
             <th>Aksi</th>
         </tr>
+
         @foreach($menu as $item)
         <tr>
             <td>
                 @if($item->foto)
-                    <img src="{{ url('images/menu/'.$item->foto) }}" width="80">
+                    <img src="{{ url('images/menu/'.$item->foto) }}">
                 @endif
             </td>
+
             <td>{{ $item->nama_menu }}</td>
             <td>Rp {{ number_format($item->harga,0,',','.') }}</td>
             <td>{{ ucfirst($item->kategori) }}</td>
+            <td>{{ $item->deskripsi ?? 'Tidak ada deskripsi' }}</td>
+
             <td>
-                <a href="{{ route('dashboard.menu.edit',$item->id) }}">Edit</a>
-                <form action="{{ route('dashboard.menu.destroy',$item->id) }}" method="POST" style="display:inline">
-                    @csrf @method('DELETE')
-                    <button onclick="return confirm('Hapus menu?')">Hapus</button>
+                <a href="{{ route('dashboard.menu.edit',$item->id) }}" class="btn-edit">
+                    Edit
+                </a>
+
+                <form method="POST" action="{{ route('dashboard.menu.destroy',$item->id) }}" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="btn-hapus">Hapus</button>
                 </form>
             </td>
         </tr>
@@ -235,4 +278,24 @@
     </table>
 
 </div>
+
+<script>
+let selectedForm = null;
+
+document.querySelectorAll('.btn-hapus').forEach(btn => {
+    btn.addEventListener('click', function () {
+        selectedForm = this.closest('form');
+        document.getElementById('deleteModal').style.display = 'flex';
+    });
+});
+
+document.getElementById('cancelBtn').onclick = function () {
+    document.getElementById('deleteModal').style.display = 'none';
+};
+
+document.getElementById('confirmBtn').onclick = function () {
+    if (selectedForm) selectedForm.submit();
+};
+</script>
+
 @endsection

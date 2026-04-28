@@ -55,7 +55,7 @@
     border-left: 4px solid #c89b3c;
 }
 
-/* ===== FORM (ABU GELAP ELEGAN) ===== */
+/* ===== FORM ===== */
 .upload-card {
     background: #1f1f1f;
     padding: 25px;
@@ -65,9 +65,9 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
 
-.upload-card h3{
-    margin-bottom:15px;
-    color:#c89b3c;
+.upload-card h3 {
+    margin-bottom: 15px;
+    color: #c89b3c;
 }
 
 .upload-card input,
@@ -87,7 +87,7 @@
     color: #aaa;
 }
 
-/* ===== TOMBOL HITAM ===== */
+/* ===== BUTTON ===== */
 .upload-card button {
     background: #000;
     color: #fff;
@@ -103,7 +103,7 @@
     background: #222;
 }
 
-/* ===== TABLE (ABU GELAP) ===== */
+/* ===== TABLE ===== */
 .gallery-table {
     width: 100%;
     border-collapse: collapse;
@@ -135,7 +135,7 @@
     border-radius: 10px;
 }
 
-/* ===== BUTTON AKSI ===== */
+/* ===== ACTION BUTTON ===== */
 .btn-edit {
     background: #000;
     color: #fff;
@@ -143,7 +143,7 @@
     border-radius: 6px;
     text-decoration: none;
     font-size: 13px;
-    margin-right:5px;
+    margin-right: 5px;
 }
 
 .btn-edit:hover {
@@ -157,36 +157,105 @@
     border-radius: 6px;
     border: none;
     font-size: 13px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .btn-delete:hover {
     background: #222;
 }
 
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-    .admin-banner{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:15px;
+    .admin-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
     }
 }
+.modal-hapus {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
 
+.modal-box {
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    color: #fff;
+    width: 320px;
+}
+
+.modal-box h2 {
+    color: #fff;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-cancel {
+    background: #333;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn-confirm {
+    background: red;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+}
+/* ===== TRASH BUTTON ===== */
+.btn-trash {
+    background: #2a2a2a;   /* INI ABU-ABU */
+    color: #c89b3c;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+    border: 1px solid #444;
+}
+
+.btn-trash:hover {
+    background: #3a3a3a;
+}
 </style>
-
-
-<div class="container">
-
-    <!-- ===== BANNER ===== -->
+<!-- ===== BANNER ===== -->
     <div class="admin-banner">
         <div>
             <h1>Kelola Galeri</h1>
             <p>Tambah, edit, dan hapus foto galeri</p>
         </div>
 
-        <div class="admin-stats">
-            Total Foto: {{ count($galeri) }}
-        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+    
+    <div class="admin-stats">
+        Total Foto: {{ count($galeri) }}
+    </div>
+
+    <a href="{{ url('/galeri/trash') }}" class="btn-trash">
+        🗑 Trash
+    </a>
+
+</div>
     </div>
 
     @if(session('success'))
@@ -194,7 +263,6 @@
             {{ session('success') }}
         </div>
     @endif
-
     <!-- ===== FORM ===== -->
     <div class="upload-card">
         <h3>Upload Foto Baru</h3>
@@ -207,35 +275,75 @@
         </form>
     </div>
 
+<div class="container">
+
     <!-- ===== TABLE ===== -->
     <table class="gallery-table">
-        <tr>
-            <th>Foto</th>
-            <th>Judul</th>
-            <th>deskripsi</th>
-            <th>Aksi</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Judul</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
 
-        @foreach($galeri as $item)
-        <tr>
-            <td>
-                @if($item->foto)
-                    <img src="{{ asset('images/galeri/'.$item->foto) }}">
-                @endif
-            </td>
-            <td>{{ $item->judul }}</td>
-            <td>{{ $item->deskripsi }}</td>
-            <td>
-                <a href="{{ route('dashboard.galeri.edit',$item->id) }}" class="btn-edit">Edit</a>
+        <tbody>
+            @foreach($galeri as $item)
+            <tr>
+                <td>
+                    @if($item->foto)
+                        <img src="{{ asset('images/galeri/'.$item->foto) }}">
+                    @endif
+                </td>
 
-                <form action="{{ route('dashboard.galeri.destroy',$item->id) }}" method="POST" style="display:inline">
-                    @csrf @method('DELETE')
-                    <button class="btn-delete" onclick="return confirm('Hapus foto galeri?')">Hapus</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
+                <td>{{ $item->judul }}</td>
+                <td>{{ $item->deskripsi }}</td>
+
+                <td>
+                    <a href="{{ route('dashboard.galeri.edit', $item->id) }}" class="btn-edit">
+                        Edit
+                    </a>
+
+                    <button type="button" class="btn-delete"
+                        onclick="openModal(`{{ route('dashboard.galeri.destroy', $item->id) }}`)">
+                        Hapus
+                    </button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
 
 </div>
+
+<!-- ===== MODAL ===== -->
+<div id="modalHapus" class="modal-hapus">
+    <div class="modal-box">
+        <h2>Konfirmasi Hapus</h2>
+        <p>Yakin ingin menghapus data ini?</p>
+
+        <div class="modal-actions">
+            <button onclick="tutupModal()" class="btn-cancel">Batal</button>
+
+            <form id="formHapus" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn-confirm">Hapus</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal(url) {
+    document.getElementById('modalHapus').style.display = 'flex';
+    document.getElementById('formHapus').action = url;
+}
+
+function tutupModal() {
+    document.getElementById('modalHapus').style.display = 'none';
+}
+</script>
+
 @endsection

@@ -71,12 +71,25 @@ class GaleriController extends Controller
     }
 
     // HAPUS FOTO
-    public function destroy(Galeri $galeri)
-    {
-        if ($galeri->foto && file_exists(public_path('images/galeri/'.$galeri->foto))) {
-            unlink(public_path('images/galeri/'.$galeri->foto));
-        }
-        $galeri->delete();
-        return back()->with('success','Foto galeri berhasil dihapus!');
-    }
+    // TEMPAT SAMPAH
+    public function trash()
+{
+    $galeri = Galeri::onlyTrashed()->get();
+
+    return view('dashboard.trash', compact('galeri'));
+}
+public function restore($id)
+{
+    Galeri::withTrashed()
+        ->findOrFail($id)
+        ->restore();
+
+    return back()->with('success', 'Data berhasil dikembalikan');
+}
+public function destroy($id)
+{
+    Galeri::findOrFail($id)->delete();
+
+    return back()->with('success', 'Data masuk ke trash');
+}
 }

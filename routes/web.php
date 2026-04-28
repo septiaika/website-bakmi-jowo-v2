@@ -12,6 +12,16 @@ use App\Models\Galeri;
 use App\Models\Testimoni;
 use App\Http\Controllers\CartController;
 
+Route::get('/galeri/trash', [GaleriController::class, 'trash']);
+Route::post('/galeri/restore/{id}', [GaleriController::class, 'restore'])->name('galeri.restore');
+Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
+
+Route::get('/menu/trash', [MenuController::class, 'trash'])->name('menu.trash');
+
+Route::post('/menu/restore/{id}', [MenuController::class, 'restore'])->name('menu.restore');
+
+Route::delete('/menu/{id}', [MenuController::class, 'destroy'])->name('menu.destroy');
+
 Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
