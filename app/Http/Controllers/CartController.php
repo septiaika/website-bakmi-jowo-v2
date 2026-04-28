@@ -22,32 +22,36 @@ class CartController extends Controller
 
     // 🔹 TAMBAH ITEM KE CART
     public function add(Request $request)
-    {
-        $request->validate([
-            'menu_id'  => 'required|exists:menus,id',
-            'quantity' => 'required|integer|min:0'
-        ]);
+{
+    $request->validate([
+        'menu_id'  => 'required|exists:menus,id',
+        'quantity' => 'required|integer|min:1'
+    ]);
 
-        $sessionId = session()->getId();
-
-        $cart = Cart::where('menu_id', $request->menu_id)
-            ->where('session_id', $sessionId)
-            ->first();
-
-        if ($cart) {
-            $cart->quantity += $request->quantity;
-            $cart->save();
-        } else {
-            Cart::create([
-                'menu_id'    => $request->menu_id,
-                'quantity'   => $request->quantity,
-                'session_id' => $sessionId
-            ]);
-        }
-
-        return redirect()->route('cart.index')
-            ->with('success', 'Berhasil ditambahkan ke keranjang');
+    if ($request->quantity <= 0) {
+        return back()->with('success', 'Jumlah tidak boleh 0');
     }
+
+    $sessionId = session()->getId();
+
+    $cart = Cart::where('menu_id', $request->menu_id)
+        ->where('session_id', $sessionId)
+        ->first();
+
+    if ($cart) {
+        $cart->quantity += $request->quantity;
+        $cart->save();
+    } else {
+        Cart::create([
+            'menu_id'    => $request->menu_id,
+            'quantity'   => $request->quantity,
+            'session_id' => $sessionId
+        ]);
+    }
+
+    return redirect()->route('cart.index')
+        ->with('success', 'Berhasil ditambahkan ke keranjang');
+}
 
     // 🔹 HAPUS ITEM DARI CART
     public function delete($id)

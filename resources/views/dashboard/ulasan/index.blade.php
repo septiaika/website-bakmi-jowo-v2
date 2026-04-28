@@ -13,12 +13,12 @@ body{
 .ulasan-header h3{
     font-weight:800;
     letter-spacing:.5px;
-    color:#fff;
+    color:#d4af37;
 }
 
 /* CARD COKLAT */
 .ulasan-card{
-    background:#997950; /* coklat elegan */
+    background:#1e1e1e;
     border:none;
     border-radius:20px;
     transition:.3s;
@@ -27,12 +27,13 @@ body{
 
 .ulasan-card:hover{
     transform:translateY(-6px);
-    box-shadow:0 20px 40px rgba(255,255,255,0.1);
+    box-shadow:0 20px 40px rgba(212,175,55,0.15);
 }
 
 /* RATING */
 .star{
     font-size:18px;
+    color:#d4af37;
 }
 
 /* BALASAN ADMIN */
@@ -40,9 +41,9 @@ body{
     margin-top:15px;
     padding:18px;
     border-radius:16px;
-    background:#2c1a1a; /* coklat lebih gelap */
+    background:#2a1d14; /* coklat lebih gelap */
     border-left:4px solid #f4b400; /* aksen emas */
-    color:#fff;
+    color:#eee;
 }
 
 .balasan-box small{
@@ -61,18 +62,20 @@ body{
 
 /* BUTTON */
 .btn-custom-warning{
-    background:#f4b400;
-    border:none;
-    color:#000;
+    background:#d4af37;
+    border:1px solid #f4b400;
+    color:#fff;
     font-weight:600;
 }
 
 .btn-custom-warning:hover{
-    background:#e0a800;
+    background:#b8962e;
+    color:#000;
 }
 
 .btn-custom-danger{
     background:#dc3545;
+    color: #fff;
     border:none;
     font-weight:600;
 }
