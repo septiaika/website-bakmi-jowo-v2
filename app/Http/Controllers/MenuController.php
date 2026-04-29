@@ -11,31 +11,67 @@ class MenuController extends Controller
 {
     // ================= PENGUNJUNG =================
 
-    public function index(Request $request)
-    {
-        $search = $request->search;
+public function index(Request $request)
+{
+    $search = strtolower($request->search);
 
-        $makanan = Menu::where('kategori','makanan')
-            ->when($search, function($query) use ($search){
-                $query->where('nama_menu', 'like', '%'.$search.'%');
-            })
-            ->get();
+    // ===== ROUTING SEARCH =====
+    if ($search) {
 
-        $minuman = Menu::where('kategori','minuman')
-            ->when($search, function($query) use ($search){
-                $query->where('nama_menu', 'like', '%'.$search.'%');
-            })
-            ->get();
+        if (str_contains($search, 'wa') || str_contains($search, 'kontak')) {
+            return redirect('https://wa.me/6281901227343');
+        }
 
-        $sessionId = session()->getId();
+        if (str_contains($search, 'instagram') || str_contains($search, 'ig')) {
+            return redirect('https://instagram.com/bakmijowo_pakheri');
+        }
 
-        $carts = Cart::with('menu')
-            ->where('session_id', $sessionId)
-            ->get();
+        if (str_contains($search, 'tiktok')) {
+            return redirect('https://www.tiktok.com/@bakmijowo_officia');
+        }
 
-        return view('menu', compact('makanan','minuman','carts','search'));
+        if (str_contains($search, 'sejarah') || str_contains($search, 'profil')) {
+            return redirect('/profil');
+        }
+
+        if (str_contains($search, 'faq')) {
+            return redirect('/beranda'); 
+        }
+    }
+    // ===== MENU SEARCH =====
+    $makanan = Menu::where('kategori','makanan')
+        ->when($search, function($query) use ($search){
+            $query->where('nama_menu', 'like', '%'.$search.'%');
+        })->get();
+
+    $minuman = Menu::where('kategori','minuman')
+        ->when($search, function($query) use ($search){
+            $query->where('nama_menu', 'like', '%'.$search.'%');
+        })->get();
+
+    $pages = [];
+    
+    $notFound = false;
+
+    if ($search) {
+        if (
+            $makanan->isEmpty() &&
+            $minuman->isEmpty() &&
+            empty($pages)
+        ) {
+            $notFound = true;
+        }
     }
 
+    // 3. RETURN VIEW
+    return view('menu', compact(
+        'makanan',
+        'minuman',
+        'pages',
+        'search',
+        'notFound'
+    ));
+}
     public function beranda()
     {
         $testimonis = Testimoni::latest()->take(3)->get();

@@ -260,6 +260,7 @@ html, body {
 
 <div class="container">
 
+
 @if(session('success'))
 <div style="background:#d4edda;padding:10px;border-radius:8px;margin-bottom:15px;">
     {{ session('success') }}
@@ -267,7 +268,7 @@ html, body {
 @endif
 
 <!-- FAQ -->
-<div class="container my-5">
+<div class="my-5">
     <div class="text-center mb-4">
         <h2 style="color:#8b5e3c;font-weight:bold;">❓ Cara Pemesanan</h2>
         <p style="color:#666;">Klik untuk melihat langkah pemesanan</p>
@@ -347,6 +348,21 @@ html, body {
 @endforeach
 </div>
 
+{{-- Hasil Lainnya --}}
+@if($search && !empty($pages))
+    <div style="margin-top:40px;">
+        <h4>Hasil Lainnya</h4>
+        <ul>
+            @foreach($pages as $p)
+                <li>
+                    <a href="{{ $p['link'] }}" target="_blank">
+                        {{ $p['nama'] }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </div>
 
 <!-- MODAL -->
@@ -380,7 +396,10 @@ function showModal(){
 function closeModal(){
     document.getElementById('qtyModal').classList.remove('show');
 }
-
+/* NOT FOUND SEARCH MODAL */
+function closeNotFound(){
+    document.getElementById('notFoundModal').style.display = 'none';
+}
 /* VALIDASI */
 document.querySelectorAll('.order-form').forEach(form => {
     form.addEventListener('submit', function(e){
@@ -397,5 +416,13 @@ function toggleFaq(el){
     el.classList.toggle('active');
 }
 </script>
-
+@if($notFound)
+<div id="notFoundModal" class="modal-qty show">
+    <div class="modal-box">
+        <h3>😢 Tidak Ditemukan</h3>
+        <p>Hasil pencarian "<b>{{ $search }}</b>" tidak tersedia.</p>
+        <button onclick="closeNotFound()">OK</button>
+    </div>
+</div>
+@endif
 @endsection
